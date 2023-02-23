@@ -4,7 +4,21 @@
   &:hover {
     .social-block__list {
       opacity: 1;
-      pointer-events: auto;
+
+      li {
+        opacity: 1;
+        transform: translateY(0);
+        transition-property: opacity, transform;
+        transition-duration: 300ms;
+
+        &:nth-child(2) {
+          transition-delay: 300ms;
+        }
+
+        &:nth-child(3) {
+          transition-delay: 600ms;
+        }
+      }
     }
   }
 }
@@ -17,6 +31,7 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+  transition: color 300ms;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -35,6 +50,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transition: width 300ms, height 300ms;
   }
 
   svg {
@@ -89,6 +105,7 @@
   margin-top: 1.5rem;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 300ms;
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
@@ -145,6 +162,8 @@
   li {
     flex: none;
     margin-bottom: 0.5rem;
+    transform: translateY(10px);
+    opacity: 0;
 
     @media (min-width: $stop-scaling) {
       margin-bottom: 5px;
@@ -168,6 +187,7 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition: color 300ms;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
