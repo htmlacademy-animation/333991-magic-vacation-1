@@ -96,12 +96,18 @@
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
+  opacity: 0;
+  transform: translateX(3.6rem);
+  transition-property: opacity, transform;
+  transition-duration: 500ms;
+  transition-delay: 200ms;
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
     max-width: 340px;
     font-size: 18px;
     line-height: 20px;
+    transform: translateX(360px);
   }
 
   @media (orientation: portrait) {
@@ -112,6 +118,7 @@
     min-height: 11.6rem;
     font-size: 1.4rem;
     line-height: 1.5rem;
+    transform: translateX(2.1rem);
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
@@ -122,6 +129,7 @@
     min-height: 14rem;
     font-size: 1.4rem;
     line-height: 1.5rem;
+    transform: translateX(2.1rem);
   }
 }
 
@@ -274,5 +282,20 @@
       height: 0.4rem;
       background-color: $c-light;
     }
+  }
+}
+
+
+.slider__item.swiper-slide-active,
+.slider__item.swiper-slide-next {
+  .slider__item-text {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slider__item.swiper-slide-next {
+  .slider__item-text {
+    transition-delay: 400ms;
   }
 }

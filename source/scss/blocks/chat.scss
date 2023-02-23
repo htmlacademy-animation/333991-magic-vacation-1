@@ -185,4 +185,24 @@
 
 .chat__footer {
   margin-top: auto;
+  .form__field {
+    margin-left: auto;
+    width: 0;
+    transition: width 300ms;
+  }
+
+  .form__button {
+    max-width: 180px;
+  }
+}
+
+
+
+
+.screen--game.active {
+  .chat__footer {
+    .form__field {
+      width: calc(100% - 21rem);
+    }
+  }
 }
