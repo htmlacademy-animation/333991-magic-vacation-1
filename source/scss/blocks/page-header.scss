@@ -35,6 +35,11 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition-property: opacity, transform;
+  transition-duration: 500ms;
+  transition-timing-function: $cb-h-f;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -130,6 +135,8 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: opacity 500ms $cb-h-f;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -252,8 +259,7 @@
       display: block;
       left: auto;
       right: 0;
-
-      transition: width 300ms, background-color 300ms ;
+      transition: width 500ms $cb-h-f, background-color 500ms $cb-h-f;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         background-color: $c-dark;
@@ -266,7 +272,8 @@
 
     &.active {
       &::after {
-        width: 100%;
+        left: 0;
+        width: 0;
       }
     }
 
@@ -302,5 +309,26 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+.is-loaded {
+  .page-header {
+    &__logo {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &__nav {
+      opacity: 1;
+    }
+
+    &__menu {
+      a.active {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
   }
 }

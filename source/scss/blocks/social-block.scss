@@ -50,7 +50,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition: width 300ms, height 300ms;
+    transform: translate(-50%, -50%) scale(0);
   }
 
   svg {
@@ -259,6 +259,15 @@
         width: 10px;
         height: 10px;
       }
+    }
+  }
+}
+
+.is-loaded {
+  .social-block__toggler {
+    &::before {
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 300ms cubic-bezier(.40,.30,.20,1.5) 200ms, width 300ms, height 300ms;
     }
   }
 }
