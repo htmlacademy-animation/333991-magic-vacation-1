@@ -39,7 +39,7 @@
   transform: translateX(-50%);
   transition-property: opacity, transform;
   transition-duration: 500ms;
-  transition-timing-function: $cb-h-f;
+  transition-timing-function: $cb-half-90;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   opacity: 0;
-  transition: opacity 500ms $cb-h-f;
+  transition: opacity 500ms $cb-half-90;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -252,14 +252,15 @@
     &::after {
       content: "";
       position: absolute;
+      left: 0;
       bottom: 0;
-      width: 0;
+      width: 100%;
       height: 2px;
       background-color: $c-light;
       display: block;
-      left: auto;
-      right: 0;
-      transition: width 500ms $cb-h-f, background-color 500ms $cb-h-f;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform 500ms $cb-half-90;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         background-color: $c-dark;
@@ -272,8 +273,8 @@
 
     &.active {
       &::after {
-        left: 0;
-        width: 0;
+        transform-origin: left;
+        transform: scaleX(1);
       }
     }
 
@@ -284,11 +285,9 @@
       transition: color 0.3s;
 
       &::after {
-        width: 100%;
-        opacity: 1;
         background-color: $c-purple;
-        right: auto;
-        left: 0;
+        transform-origin: left;
+        transform: scaleX(1);
       }
     }
   }
@@ -326,7 +325,8 @@
     &__menu {
       a.active {
         &::after {
-          width: 100%;
+          transform-origin: left;
+          transform: scaleX(1);
         }
       }
     }
